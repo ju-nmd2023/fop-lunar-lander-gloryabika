@@ -198,6 +198,7 @@ function Building(height) {
     };
 }
 
+//how the objects move
 function moveBuildings() {
     for (let building of buildings) {
         building.x -= 5;
@@ -212,6 +213,7 @@ function moveBuildings() {
     buildings = buildings.filter(building => building.x + 70 > 0);
 }
 
+//how the airplane collides
 function collideWithBuildings() {
     for (let building of buildings) {
         if (
@@ -225,7 +227,7 @@ function collideWithBuildings() {
     return false;
 }
 
-
+//where the game starts over
 function restartGame() {
     gameState = "game";
     restartButton.hide();
@@ -234,14 +236,5 @@ function restartGame() {
     speed = 0;
     buildings = [];
     score = 0;
-    loop();
-}
-
-function resetGame() {
-    score = 0;
-    buildings = [];
-    y = 100;
-    speed = 0;
-    gameState = "game";
     loop();
 }
