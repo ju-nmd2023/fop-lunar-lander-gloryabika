@@ -84,7 +84,7 @@ function startScreen() {
     rect(340, 275, 7);
     rect(355, 290, 7);
 
-    // Check if mouse is over the button
+    //Check if mouse is over the button
     if (
         mouseX > 230 &&
         mouseX < 430 &&
