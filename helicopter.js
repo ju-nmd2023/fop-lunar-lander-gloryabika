@@ -1,8 +1,10 @@
+//the following code from line 129 to 145 are recieved from chatgpt : https://chatgpt.com/c/4ff1156c-dadb-4f54-96bb-25757ec699de 
 
 let speed = 0;
 let gravity = 0.3;
 let score = 0;
-let gameState = "game";
+let gameState = "start";
+let startButton;
 let restartButton;
 let LandingSpeed = 2;
 
@@ -17,6 +19,15 @@ function setup() {
     restartButton.style('font-size', '50px');
     restartButton.style('border', 'none');
     restartButton.style('background', 'none');
+
+
+    startButton = createButton('START');
+    startButton.position(370, 200);
+    startButton.mousePressed(startGame);
+    startButton.style('color', 'lightgreen');
+    startButton.style('font-size', '40px');
+    startButton.style('border', 'none');
+    startButton.style('background', 'none');
 }
 
 function draw() {
@@ -56,9 +67,11 @@ function startScreen() {
     textSize(40);
     textStyle(BOLD);
     text("Helicopter Lander", 250, 150);
+}
 
-    fill(220, 255, 205);
-    text("START", 370, 230);
+function startGame() {
+    gameState = "game";
+    startButton.hide();
 }
 
 //main game
@@ -80,9 +93,20 @@ function gameScreen() {
 //asphalt ground
 function ground() {
     noStroke();
+
+    //lights
+    fill(255, 0, 0);
+    rect(90, 470, 15, 30, 10);
+    rect(240, 430, 15, 30, 10);
+    rect(600, 430, 15, 30, 10);
+    rect(730, 470, 15, 30, 10);
+
     fill(60);
     rect(0, 490, 800, 110);
     rect(200, 450, 450, 100);
+
+    fill(255, 225, 77);
+    rect(200, 460, 450, 20);
 }
 
 let x = 400;
@@ -90,7 +114,7 @@ let y = 100;
 
 //the helicopter
 function helicopter() {
-    //box
+    //mechanic box
     fill(255);
     rect(x, y, 50, 50);
 
