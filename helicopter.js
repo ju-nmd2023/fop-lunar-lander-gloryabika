@@ -1,5 +1,4 @@
-let x = 400;
-let y = 100;
+
 let speed = 0;
 let gravity = 0.3;
 let score = 0;
@@ -10,14 +9,14 @@ let LandingSpeed = 2;
 function setup() {
     createCanvas(800, 600);
     restartButton = createButton('↻');
-    restartButton.position(width / 2, height / 2.5 + 20);
+    restartButton.position(410, 150);
     restartButton.mousePressed(restartGame);
     restartButton.hide();
 
     restartButton.style('color', 'white');
-    restartButton.style('font-weight', 'bold');
     restartButton.style('font-size', '50px');
     restartButton.style('border', 'none');
+    restartButton.style('background', 'none');
 }
 
 function draw() {
@@ -83,16 +82,38 @@ function ground() {
     noStroke();
     fill(60);
     rect(0, 490, 800, 110);
-
     rect(200, 450, 450, 100);
 }
 
+let x = 400;
+let y = 100;
+
 //the helicopter
 function helicopter() {
-
     //box
     fill(255);
     rect(x, y, 50, 50);
+
+    //helicopter legs
+    fill(50);
+    rect(x - 5, y + 130, 15, 30, 10);
+    rect(x + 40, y + 130, 15, 30, 10);
+
+    fill(205, 235, 250);
+    ellipse(x + 25, y, 250, 30);
+
+    //helicopter body
+    fill(0);
+    rect(x - 35, y, 120, 135, 40);
+
+    //helicopter window
+    fill(180, 185, 200);
+    rect(x - 15, y + 40, 30, 40);
+    rect(x + 35, y + 40, 30, 40);
+
+    fill(0);
+    ellipse(x + 25, y + 90, 100, 30);
+
     speed += gravity;
     y += speed;
 
@@ -100,8 +121,8 @@ function helicopter() {
     if (keyIsDown(UP_ARROW)) {
         speed -= 0.8;
     }
-    if (y + 50 > 450) {
-        y = 450 - 50;
+    if (y + 50 > 340) {
+        y = 340 - 50;
         if (speed > LandingSpeed) {
             gameState = "gameover";
         } else {
@@ -117,7 +138,7 @@ function gameover() {
     textStyle(BOLD);
     textSize(32);
     textAlign(CENTER, CENTER);
-    text("GAME OVER!", width / 2, height / 5);
+    text("GAME OVER!", 430, 100);
     noLoop();
     restartButton.show();
 }
@@ -128,7 +149,7 @@ function win() {
     textStyle(BOLD);
     textSize(32);
     textAlign(CENTER, CENTER);
-    text("GREAT JOB!", width / 2, height / 5);
+    text("GREAT JOB!", 430, 100);
     restartButton.show();
 }
 
